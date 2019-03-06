@@ -29,4 +29,11 @@ class MessagesController < ApplicationController
     end
   end
   
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy  
+    redirect_to messages_path,notice: 'deleted!'
+  end
+  
+  
 end
