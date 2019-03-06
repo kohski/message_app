@@ -16,5 +16,17 @@ class MessagesController < ApplicationController
     end
   end
   
+  def edit
+    @message = Message.find(params[:id])
+  end
+  
+  def update
+    @message=Message.find(params[:id])
+    if @message.update(params.require(:message).permit(:content))
+      redirect_to messages_path,notice: 'editted'
+    else
+      render 'edit'
+    end
+  end
   
 end

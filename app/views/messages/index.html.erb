@@ -1,5 +1,6 @@
 <% @messages.each do |msg|%>
   <div class="msg_main">
-    <%= msg.content %>    
+    <%= msg.content %>
+    <%= link_to 'edit',edit_message_path(msg.id) %>
   </div>
 <% end %>
