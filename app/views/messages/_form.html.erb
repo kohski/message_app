@@ -1,11 +1,15 @@
 <%= form_with(model: @message, local: true, url: choose_new_or_edit ) do |form| %>
   <% if @message.errors.any?%>
-    <p><%= @message.errors.size %> 件のエラーがあります。</p>
-    <% @message.errors.full_messages.each do |msg|%>
-      <p><%= msg %></p>
-    <% end %>
+    <div id="error_header"><%= @message.errors.size %> 件のエラーがあります</div>
+    <ul id="error_content">
+      <% @message.errors.full_messages.each do |msg|%>
+        <li><%= msg %></li>
+      <% end %>      
+    </ul>
   <% end %>
-  <h1>message</h1>
+  <h2>message</h2>
   <%= form.text_area :content %>
   <%= form.submit "submit" %>
 <% end %>
+<%= link_to 'back to index',messages_path %>
+
