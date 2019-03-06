@@ -4,7 +4,11 @@ class MessagesController < ApplicationController
   end
   
   def new
-    @message = Message.new
+    if params[:back]
+      @message = Message.new(params.require(:message).permit(:content))
+    else
+      @message = Message.new
+    end
   end
   
   def create
@@ -35,5 +39,8 @@ class MessagesController < ApplicationController
     redirect_to messages_path,notice: 'deleted!'
   end
   
+  def confirm
+    @message = Message.new(params.require(:message).permit(:content))
+  end
   
 end

@@ -1,0 +1,11 @@
+<%= form_with(model: @message, local: true, ) do |form| %>
+  <h1>message</h1>
+  <%= form.hidden_field :content%>
+  <p><%= @message.content %></p>
+  <%= form.submit "submit" %>
+<% end %>
+
+<%=  form_with(model: @message, local: true, url: new_message_path , method: 'get' ) do |form|%>
+  <%= form.hidden_field :content %>
+  <%= form.submit 'back', name: 'back' %>
+<% end %>
