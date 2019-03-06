@@ -9,8 +9,11 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(params.require(:message).permit(:content))
-    @message.save
-    redirect_to messages_path, notice: 'create!' 
+    if @message.save
+      redirect_to messages_path, notice: 'create!' 
+    else
+      render 'new'
+    end
   end
   
   

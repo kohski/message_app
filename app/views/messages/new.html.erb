@@ -1,5 +1,11 @@
 <%= form_with(model: @message, local: true) do |form| %>
-    <h1>message</h1>
-    <%= form.text_area :content %>
-    <%= form.submit "submit" %>
+  <% if @message.errors.any?%>
+    <p><%= @message.errors.size %> 件のエラーがあります。</p>
+    <% @message.errors.full_messages.each do |msg|%>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+  <h1>message</h1>
+  <%= form.text_area :content %>
+  <%= form.submit "submit" %>
 <% end %>
