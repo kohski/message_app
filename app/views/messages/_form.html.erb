@@ -7,9 +7,17 @@
       <% end %>      
     </ul>
   <% end %>
-  <h2>message</h2>
-  <%= form.text_area :content %>
-  <%= form.submit "submit" %>
+  <div id="tweet_entry">
+    <div id="tweet_header">
+      <h2>message</h2>
+    </div>
+    <div id="tweet_content">  
+      <%= form.text_area :content %>
+      <%= form.submit "submit" %>
+    </div>
+  </div>
 <% end %>
-<%= link_to 'back to index',messages_path %>
+<div class="page-link">
+  <%= link_to 'back to index',messages_path %>
+</div>
 
